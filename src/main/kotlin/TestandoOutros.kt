@@ -5,13 +5,17 @@ fun main(args: Array<String>) {
     //testar com valor 500000003
 
     for (i in 0 until n) {
+        var tempoInicial = System.currentTimeMillis()
         var numero = readLine()!!.toInt()
         if(verificaPodeSerPrimo(numero)){
             println("Prime ")
         } else {
             println("Not Prime ")
         }
+        var tempoFinal= System.currentTimeMillis()
+        println("o metodo executou em " + (tempoFinal - tempoInicial) + " milisegundos")
     }
+
 }
 
 fun verificaPodeSerPrimo(numero: Int): Boolean{

@@ -2,41 +2,25 @@ fun main(args: Array<String>) {
 
     var s : String
     var n : Int
-   // val r = """0x.*""".toRegex()
-   // while(true) {
+    val r = """0x.*""".toRegex()
+
+    while(true) {
 
 //escreva sua solução aqui
-        val r = "0x"
 
-        while (true) {
-            val s = readLine()!!
-
-            try {
-                val value = s.toInt()
-
-                if (value == -1) {
-                    break
-                }
-            } catch (e: Exception) {}
-
-            if (s.contains(r)) {
-                hexaToDecimal(s)
-            } else {
-                decimalToHexa(s)
-            }
+        val s = readLine().toString()
+        val valor = s
+        if (valor=="-1") { break }
+        if (s.contains(r)) {
+            val hex = s.subSequence(2, s.length).toString()
+            val n = Integer.parseInt(hex, 16)
+            print("$n\n")
+           // println("é um hexa")
+        } else {
+            n = s.toInt()
+            val hexadecimal = Integer.toHexString(n).toUpperCase()
+            println("0x$hexadecimal")
         }
     }
-
-    fun decimalToHexa(s: String) {
-        val n = s.toInt()
-
-        print("0x${Integer.toHexString(n).toUpperCase()}\n")
-    }
-
-    fun hexaToDecimal(s: String) {
-        val hex = s.subSequence(2, s.length).toString()
-        val n = Integer.parseInt(hex, 16)
-
-        print("$n\n")
-    }
+}
 
